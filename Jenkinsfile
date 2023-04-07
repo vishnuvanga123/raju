@@ -1,10 +1,7 @@
 pipeline {
     
 	agent any
-/*	
-	tools {
-        maven "maven3"
-    }
+
 	
     stages{
         
@@ -18,6 +15,6 @@ pipeline {
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
-        }
-	    
+	}
     }
+}
