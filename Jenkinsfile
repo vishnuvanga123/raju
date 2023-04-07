@@ -1,7 +1,13 @@
 pipeline {
     
 	agent any
-
+	
+environment {
+        registry = "anildevops/vproappdock"
+        registryCredential = 'dockerhub'
+    }
+	
+	
 	
     stages{
         
@@ -37,6 +43,14 @@ pipeline {
                 success {
                     echo 'Generated Analysis Result'
                 }
+            }
+        }
+	    
+       stage('Building image') {
+            steps{
+              script {
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+              }
             }
         }
     }
